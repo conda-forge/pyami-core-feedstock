@@ -63,6 +63,9 @@ outputs:
     tests:
       - script:
           - ami --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
 
 
 about:

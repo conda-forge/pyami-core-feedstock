@@ -40,6 +40,9 @@ outputs:
           imports:
             - pyAMI
           pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: pyami-core-cli
@@ -51,6 +54,9 @@ outputs:
         entry_points:
           - ami=pyAMI.app:main
     requirements:
+      host:
+        - python ${{ python_min }}.*
+        - pip
       run:
         - python >=${{ python_min }}
         - pyami-core

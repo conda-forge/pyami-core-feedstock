@@ -2,8 +2,9 @@ schema_version: 1
 
 context:
   version: "5.1.4"
+  build_number: 1
 
-package:
+recipe:
   name: pyami-core
   version: ${{ version }}
 
@@ -18,31 +19,56 @@ source:
     - patches/0005-raw-strings-for-W.patch
 
 build:
-  number: 0
-  noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  python:
-    entry_points:
-      - ami=pyAMI.app:main
+  number: ${{ build_number }}
 
-requirements:
-  host:
-    - python ${{ python_min }}.*
-    - pip
-  run:
-    - python >=${{ python_min }}
-    - lxml
+outputs:
+  - package:
+      name: pyami-core
+      version: ${{ version }}
+    build:
+      noarch: python
+      script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    requirements:
+      host:
+        - python ${{ python_min }}.*
+        - pip
+        - setuptools
+      run:
+        - python >=${{ python_min }}
+        - lxml
+    tests:
+      - python:
+          imports:
+            - pyAMI
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
-tests:
-  - python:
-      imports:
-        - pyAMI
-      pip_check: true
-      python_version:
-        - ${{ python_min }}.*
-        - "*"
-  - script:
-      - ami --help
+  - package:
+      name: pyami-core-cli
+      version: ${{ version }}
+    build:
+      noarch: python
+      script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+      python:
+        entry_points:
+          - ami=pyAMI.app:main
+    requirements:
+      host:
+        - python ${{ python_min }}.*
+        - pip
+        - setuptools
+      run:
+        - python >=${{ python_min }}
+        - pyami-core
+    tests:
+      - script:
+          - ami --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
 
 about:
   summary: Python ATLAS Metadata Interface (pyAMI)

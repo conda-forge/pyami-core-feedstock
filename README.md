@@ -31,6 +31,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pyami--core-green.svg)](https://anaconda.org/conda-forge/pyami-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyami-core.svg)](https://anaconda.org/conda-forge/pyami-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyami-core.svg)](https://anaconda.org/conda-forge/pyami-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyami-core.svg)](https://anaconda.org/conda-forge/pyami-core) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-pyami--core--cli-green.svg)](https://anaconda.org/conda-forge/pyami-core-cli) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pyami-core-cli.svg)](https://anaconda.org/conda-forge/pyami-core-cli) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pyami-core-cli.svg)](https://anaconda.org/conda-forge/pyami-core-cli) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pyami-core-cli.svg)](https://anaconda.org/conda-forge/pyami-core-cli) |
 
 Installing pyami-core
 =====================
@@ -42,16 +43,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pyami-core` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `pyami-core, pyami-core-cli` can be installed with `conda`:
 
 ```
-conda install pyami-core
+conda install pyami-core pyami-core-cli
 ```
 
 or with `mamba`:
 
 ```
-mamba install pyami-core
+mamba install pyami-core pyami-core-cli
 ```
 
 It is possible to list all of the versions of `pyami-core` available on your platform with `conda`:

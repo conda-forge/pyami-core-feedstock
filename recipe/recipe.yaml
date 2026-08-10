@@ -27,7 +27,7 @@ outputs:
         # upstream's pyproject.toml unconditionally declares an `ami` console
         # script; strip it here so this library-only output doesn't clobber
         # the `ami` command shipped by the pyami-core-cli output.
-        - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+        - ${{ PYTHON }} -m pip install . -vv
         - ${{ PYTHON }} -c "import glob, os, sysconfig; [os.remove(f) for f in glob.glob(os.path.join(sysconfig.get_path('scripts'), 'ami*'))]"
     requirements:
       host:
